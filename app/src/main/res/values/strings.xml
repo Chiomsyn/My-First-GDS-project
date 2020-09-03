@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">My GDS Project</string>
+    <string name="gds_title">Google Africa</string>
+    <string name="learn_txt">Learning hours,</string>
+</resources>
