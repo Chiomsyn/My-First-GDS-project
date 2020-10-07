@@ -7,6 +7,6 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface SkillsApiInterface_Get {
-    @GET("")
+    @GET("/api/skilliq")
     Call<List<SkillsListResponse>> getSkillsList();
 }

@@ -8,7 +8,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
     public interface LearnersApiInterface_Get {
-        @GET("")
+        @GET("/api/hours")
         Call<List<LearnersListResponse>> getLearnersList();
     }
 

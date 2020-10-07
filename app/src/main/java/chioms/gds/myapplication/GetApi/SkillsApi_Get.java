@@ -10,7 +10,7 @@ public class SkillsApi_Get {
 
         if(sRetrofit == null){
             sRetrofit = new Retrofit.Builder()
-                    .baseUrl("")
+                    .baseUrl("https://gadsapi.herokuapp.com/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }

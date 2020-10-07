@@ -2,6 +2,8 @@ package chioms.gds.myapplication.Fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,15 +32,19 @@ public class SkillsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.skills_item_list, container, false);
 
+        return inflater.inflate(R.layout.skills_item_list, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         // Set the adapter
-            RecyclerView recyclerView = view.findViewById(R.id.skills_list);
-            getSkillsListData();
-                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-                recyclerView.setHasFixedSize(true);
-             recyclerView.setAdapter(new SkillsRecyclerViewAdapter(mListResponses, this));
-        return view;
+        RecyclerView recyclerView = view.findViewById(R.id.skills_list);
+        getSkillsListData();
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(new SkillsRecyclerViewAdapter(mListResponses, this));
     }
 
     private void getSkillsListData() {

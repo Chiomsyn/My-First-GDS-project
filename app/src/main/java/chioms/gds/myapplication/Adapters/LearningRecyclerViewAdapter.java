@@ -3,7 +3,6 @@ package chioms.gds.myapplication.Adapters;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +12,6 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import chioms.gds.myapplication.Fragment.LearningFragment;
 import chioms.gds.myapplication.ListResponse.LearnersListResponse;
 import chioms.gds.myapplication.R;
 
@@ -21,12 +19,13 @@ import java.util.List;
 
 public class LearningRecyclerViewAdapter extends RecyclerView.Adapter<LearningRecyclerViewAdapter.LearnersViewHolder> {
 
-    Fragment mContext;
+    Context mContext;
      private List<LearnersListResponse> mValues;
 
-            public LearningRecyclerViewAdapter(List<LearnersListResponse> items, Fragment fragment) {
+
+    public LearningRecyclerViewAdapter(List<LearnersListResponse> items, Context Context) {
             mValues = items;
-            mContext = fragment;
+            mContext = Context;
 
     }
 
@@ -39,26 +38,25 @@ public class LearningRecyclerViewAdapter extends RecyclerView.Adapter<LearningRe
     }
 
     @Override
-    public void onBindViewHolder(@NonNull LearnersViewHolder holder, int position) {
-                String image_url = mValues.get(position).getUrl();
-                String mlearnHourstxt = mValues.get(position).getHour() + (R.string.learn_txt) + mValues.get(position).getCountry();
+    public void onBindViewHolder(LearnersViewHolder holder, int position) {
+        LearnersListResponse learnersListResponse = mValues.get(position);
+               String image_url  = learnersListResponse.getBadgeUrl();
+                String mlearnHourstxt = learnersListResponse.getHour() + (R.string.learn_txt) + learnersListResponse.getCountry();
 
-                Context context = mContext.getContext();
-
-        Picasso.with(context)
+        Picasso.with(mContext)
                 .load(image_url)
                 .placeholder(android.R.drawable.sym_def_app_icon)
                 .error(android.R.drawable.sym_def_app_icon)
                 .into(holder.mTopLearnerImg);
 
-                holder.mLearnerName.setText(mValues.get(position).getName());
+                holder.mLearnerName.setText(learnersListResponse.getName());
                 holder.mLearnHours.setText(mlearnHourstxt);
 
     }
 
     @Override
     public int getItemCount() {
-        return mValues.size();
+              return 2;
     }
 
     public class LearnersViewHolder extends RecyclerView.ViewHolder {
@@ -71,12 +69,6 @@ public class LearningRecyclerViewAdapter extends RecyclerView.Adapter<LearningRe
             mTopLearnerImg = view.findViewById(R.id.topLearner_img);
             mLearnerName = view.findViewById(R.id.learner_name);
             mLearnHours = view.findViewById(R.id.learn_hours);
-        }
-
-        @NonNull
-        @Override
-        public String toString() {
-            return super.toString() + " '" + mLearnHours.getText() + "'";
         }
     }
 }

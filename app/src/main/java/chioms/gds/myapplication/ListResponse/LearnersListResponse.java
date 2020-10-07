@@ -1,40 +1,46 @@
 package chioms.gds.myapplication.ListResponse;
 
+
 public class LearnersListResponse {
-    private String mName;
-    private String mHour;
-    private String mCountry;
-    private String mUrl;
+
+    //@SerializedName("name")
+    private String name;
+   //@SerializedName("hour")
+    private String hour;
+ //  @SerializedName("country")
+    private String country;
+  // @SerializedName("badgeUrl")
+    private String badgeUrl;
 
     public String getName() {
-        return mName;
+        return name;
     }
 
     public void setName(String name) {
-        mName = name;
+        this.name = name;
     }
 
     public String getHour() {
-        return mHour;
+        return hour;
     }
 
     public void setHour(String hour) {
-        mHour = hour;
+        this.hour = hour;
     }
 
     public String getCountry() {
-        return mCountry;
+        return country;
     }
 
     public void setCountry(String country) {
-        mCountry = country;
+        this.country = country;
     }
 
-    public String getUrl() {
-        return mUrl;
+    public String getBadgeUrl() {
+        return badgeUrl;
     }
 
-    public void setUrl(String url) {
-        mUrl = url;
+    public void setBadgeUrl(String badgeUrl) {
+        this.badgeUrl = badgeUrl;
     }
 }

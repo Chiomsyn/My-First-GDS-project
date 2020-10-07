@@ -20,13 +20,13 @@ import java.util.List;
 
 public class SkillsRecyclerViewAdapter extends RecyclerView.Adapter<SkillsRecyclerViewAdapter.SkillsViewHolder> {
 
-    Fragment mContext;
+    Fragment mFragment;
     private final List<SkillsListResponse> mValues;
-
+    private SkillsListResponse mResponse;
 
     public SkillsRecyclerViewAdapter(List<SkillsListResponse> values, Fragment fragment) {
         mValues = values;
-        mContext = fragment;
+        mFragment = fragment;
     }
 
     @NonNull
@@ -39,10 +39,11 @@ public class SkillsRecyclerViewAdapter extends RecyclerView.Adapter<SkillsRecycl
 
     @Override
     public void onBindViewHolder(final SkillsViewHolder holder, int position) {
-        String image_url = mValues.get(position).getUrl();
-        String mSkillsScoretxt = mValues.get(position).getScore() + " skill IQ Score, " + mValues.get(position).getCountry();
+        mResponse =  mValues.get(position);
+        String image_url =mResponse.getBadgeUrl();
+        String mSkillsScoretxt = mResponse.getScore() + " skill IQ Score, " + mResponse.getCountry();
 
-        Context context = mContext.getContext();
+        Context context = mFragment.getContext();
 
         Picasso.with(context)
                 .load(image_url)
@@ -50,13 +51,13 @@ public class SkillsRecyclerViewAdapter extends RecyclerView.Adapter<SkillsRecycl
                 .error(android.R.drawable.sym_def_app_icon)
                 .into(holder.mTopSkillsImg);
 
-        holder.mSkillsName.setText(mValues.get(position).getName());
+        holder.mSkillsName.setText(mResponse.getName());
         holder.miqScore.setText(mSkillsScoretxt);
     }
 
     @Override
     public int getItemCount() {
-        return mValues.size();
+        return 20;
     }
 
     public class SkillsViewHolder extends RecyclerView.ViewHolder {
@@ -68,8 +69,8 @@ public class SkillsRecyclerViewAdapter extends RecyclerView.Adapter<SkillsRecycl
         public SkillsViewHolder(View view) {
             super(view);
             mTopSkillsImg = view.findViewById(R.id.skill_iq_img);
-            mSkillsName = (TextView) view.findViewById(R.id.top_skills_name);
-            miqScore = (TextView) view.findViewById(R.id.iq_score);
+            mSkillsName = view.findViewById(R.id.top_skills_name);
+            miqScore = view.findViewById(R.id.iq_score);
         }
 
         @Override

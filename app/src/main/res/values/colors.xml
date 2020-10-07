@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorPrimary">#050505</color>
+    <color name="colorPrimaryDark">#373737</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="pluralsight_orange">#EB8706</color>
+    <color name="pluralsight_orange">#FFC107</color>
+    <color name="end_color">#FF7700</color>
     <color name="stroke">#000000</color>
     <color name="txtColor">#766F6F</color>
 </resources>

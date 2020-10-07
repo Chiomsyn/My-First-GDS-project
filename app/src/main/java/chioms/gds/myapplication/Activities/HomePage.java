@@ -17,7 +17,6 @@ import chioms.gds.myapplication.Adapters.ViewPagerAdapter;
 
 public class HomePage extends AppCompatActivity {
 
-
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
     private Button mButton;

@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent mIntent = new Intent(MainActivity.this, SubmissionPage.class);
+                Intent mIntent = new Intent(MainActivity.this, HomePage.class);
                 startActivity(mIntent);
                 finish();
             }
